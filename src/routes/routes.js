@@ -5,8 +5,8 @@ const mysqlConnection = require('../database');
 router.get('/api/GetAll', (req, res) => {
     mysqlConnection.query('SELECT * FROM articulos', (err, rows, fields) => {
         if(!err) {
-            res.json(rows);
             res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, content-type");
+            res.json(rows);
         }else{
            console.log(err); 
         }
