@@ -5,7 +5,7 @@ const mysqlConnection = require('../database');
 router.get('/api/GetAll', (req, res) => {
     mysqlConnection.query('SELECT * FROM articulos', (err, rows, fields) => {
         if(!err) {
-            res.json(rows);
+            res.json(rows).header('Access-Control-Allow-Origin: *');
         }else{
            console.log(err); 
         }
@@ -16,7 +16,7 @@ router.get('/api/GetOne/:id', (req, res) => {
     const { id } = req.params;
     mysqlConnection.query('SELECT * FROM articulos WHERE id = ?', [id], (err, rows, fields) => {
         if(!err) {
-            res.json(rows[0]);
+            res.json(rows[0]).header('Access-Control-Allow-Origin: *');
         }else{
            console.log(err); 
         }
