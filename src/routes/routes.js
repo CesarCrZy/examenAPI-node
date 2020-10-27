@@ -2,7 +2,7 @@ const express =require('express');
 const router = express.Router();
 const mysqlConnection = require('../database');
 
-router.get('https://apirest-examen.herokuapp.com/api/GetAll', (req, res) => {
+router.get('/api/GetAll', (req, res) => {
     mysqlConnection.query('SELECT * FROM articulos', (err, rows, fields) => {
         if(!err) {
             res.json(rows).header('Access-Control-Allow-Origin: *');
